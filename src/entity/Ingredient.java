@@ -10,19 +10,19 @@ package entity;
  * @author ACE
  */
 public class Ingredient {
-    private String stockCode;
+    private String unqCode;
     private int pieces;
     private double amount;
 
     public Ingredient() {
     }
 
-    public String getStockCode() {
-        return stockCode;
+    public String getUnqCode() {
+        return unqCode;
     }
 
-    public void setStockCode(String stockCode) {
-        this.stockCode = stockCode;
+    public void setUnqCode(String unqCode) {
+        this.unqCode = unqCode;
     }
 
     public int getPieces() {

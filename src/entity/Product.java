@@ -10,33 +10,42 @@ package entity;
  * @author ACE
  */
 public class Product {
-    private int pID;
+    private int pid;
     private String name;
     private String category;
     private double price;
     private String brand;
     private String barcode;
     private int piece;
-    private String desc;
+    private String descr;
 
     
     public Product() {
-        this.pID = -1;
-        this.name = "";
-        this.category = "";
-        this.price = -1;
-        this.brand = "";
-        this.barcode = "";
-        this.piece = -1;
-        this.desc="";
+    }
+
+    public Product(String name, String category, double price, String brand, String barcode, int piece, String descr) {
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.brand = brand;
+        this.barcode = barcode;
+        this.piece = piece;
+        this.descr = descr;
+    }
+
+    public Product(int pid, String name, String category, double price, String brand, String barcode, int piece, String descr) {
+        this.pid = pid;
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.brand = brand;
+        this.barcode = barcode;
+        this.piece = piece;
+        this.descr = descr;
     }
 
     public int getpID() {
-        return pID;
-    }
-
-    public void setpID(int pID) {
-        this.pID = pID;
+        return pid;
     }
 
     public String getBarcode() {
@@ -87,12 +96,12 @@ public class Product {
         this.piece = piece;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescr() {
+        return descr;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescr(String desc) {
+        this.descr = desc;
     }
     
 }

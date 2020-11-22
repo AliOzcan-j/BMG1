@@ -5,10 +5,8 @@
  */
 package controller;
 
-import backend.IFile;
+import DAO.ProductDAO;
 import entity.Product;
-import backend.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,63 +14,40 @@ import java.util.List;
  *
  * @author ACE
  */
-public class ProductController implements IFile{
-    private FileIO fileIO;
+public class ProductController{
     private Product product;
+    private ProductDAO doa;
 
     public ProductController() {
-        this.fileIO=new FileIO("Ürünler.txt");
     }
     
-    @Override
-    public void create(List<String> s) {
-        try {
-            fileIO.fileWrite(s, "Ürünler.txt");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    @Override
-    public List<String> read() {
-        List<String> s=new ArrayList<>();
-        try {
-            s=fileIO.fileRead("Ürünler.txt");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        return s;
-    }
-
-    @Override
-    public void delete(int id) {
-        try {
-            fileIO.fileDelete("Ürünler.txt", id);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    public void create(String name, String category, double price, String brand, String barcode, int piece, String descr){
+        this.product=new Product(name, category, price, brand, barcode, piece, descr);
+        this.getDoa().create(product);
     }
     
-    public List<String> kodla(Product p) throws IOException {
-        List<String> s = new ArrayList<>();
-        List<String> t = new ArrayList<>();
+    public List<Product> read(){        
+        return this.getDoa().read();
+    }
+    
+    public void update(int id, String name, String category, double price, String brand, String barcode, int piece, String descr){
+        product=new Product(id, name, category, price, brand, barcode, piece, descr);
+        this.getDoa().update(product);
+    }
+    
+    public void delete(int v){
+        this.getDoa().delete(v);
+    }
 
-        for (int j = 0; j < 40; j++) {
-            s.add("");
+    public ProductDAO getDoa() {
+        if(this.doa==null){
+            this.doa=new ProductDAO();
         }
+        return doa;
+    }
 
-        s.add(p.getpID(), "ID:" + Integer.toString(p.getpID()) + "." + "Ürün adı: " + p.getName()
-                + "|" + " Kategori: " + p.getCategory() + "|"
-                + " Fiyat: " + Double.toString(p.getPrice()) + "| Marka: " + p.getBrand()
-                + "| Barkod: " + p.getBarcode() + "| Miktar: " + p.getPiece() + "| "
-                + "Açıklama: " + p.getDesc() + "|");
-
-        for (int j = 0; j < 40; j++) {
-            if (!"".equals(s.get(j))) {
-                t.add(s.get(j));
-            }
-        }
-        return t;
+    public void setDoa(ProductDAO doa) {
+        this.doa = doa;
     }
     
 }

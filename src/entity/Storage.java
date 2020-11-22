@@ -5,8 +5,6 @@
  */
 package entity;
 
-import backend.*;
-
 /**
  *
  * @author ACE
@@ -14,17 +12,9 @@ import backend.*;
 public class Storage {
     private Product product;
     private Ingredient ingredient;
-    private String stockCode;
 
     public Storage() {
     }
     
-    public String getStockCode() {
-        return stockCode;
-    }
-
-    public void setStockCode(String stockCode) {
-        this.stockCode = stockCode;
-    }
     
 }

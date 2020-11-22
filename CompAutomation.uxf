@@ -2,153 +2,142 @@
 <diagram program="umlet" version="14.3.0">
   <zoom_level>9</zoom_level>
   <element>
-    <id>UMLInterface</id>
+    <id>UMLClass</id>
     <coordinates>
-      <x>675</x>
-      <y>63</y>
-      <w>162</w>
-      <h>108</h>
+      <x>450</x>
+      <y>297</y>
+      <w>180</w>
+      <h>27</h>
     </coordinates>
-    <panel_attributes>IFile
---
-void create(List&lt;String&gt; s);
-List&lt;String&gt; read();
-void delete(int id);</panel_attributes>
+    <panel_attributes>product</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>675</x>
-      <y>693</y>
-      <w>261</w>
-      <h>108</h>
+      <x>450</x>
+      <y>324</y>
+      <w>90</w>
+      <h>153</h>
     </coordinates>
-    <panel_attributes>FileIO
+    <panel_attributes>PK||pid          .
 --
-- file:File
+pname
 --
-+ fileWrite(List&lt;String&gt; aList, String file):void
-+ fileRead(String file):List&lt;String&gt;
-+ FileReadId(String file, int id):String
-+ fileDelete(String file, int id):void</panel_attributes>
+category
+--
+price
+--
+brand
+--
+PK||barcode
+--
+piece
+--
+desc</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>378</x>
-      <y>234</y>
-      <w>225</w>
-      <h>135</h>
+      <x>540</x>
+      <y>324</y>
+      <w>90</w>
+      <h>153</h>
     </coordinates>
-    <panel_attributes>AccountTotal
+    <panel_attributes>integer           .
 --
-- fileIO:FileIO
-- gelir:double
-- gider:double
+varchar
 --
-+ gelirToplam(double gelir):double
-+ giderToplam(double gider):double</panel_attributes>
+varchar
+--
+real
+--
+varchar
+--
+varchar
+--
+integer
+--
+text</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>234</x>
-      <y>432</y>
+      <x>657</x>
+      <y>297</y>
+      <w>180</w>
+      <h>27</h>
+    </coordinates>
+    <panel_attributes>ingredient</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>657</x>
+      <y>324</y>
+      <w>90</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>PK||stockCode
+--
+pieces
+--
+amount</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>747</x>
+      <y>324</y>
+      <w>90</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>varchar         .
+--
+integer
+--
+real</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>576</x>
+      <y>171</y>
       <w>126</w>
-      <h>54</h>
+      <h>27</h>
     </coordinates>
-    <panel_attributes>Date
---
-- current:String
-- returned:String
---</panel_attributes>
+    <panel_attributes>storage</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>918</x>
-      <y>234</y>
-      <w>117</w>
-      <h>63</h>
+      <x>576</x>
+      <y>198</y>
+      <w>63</w>
+      <h>45</h>
     </coordinates>
-    <panel_attributes>Stock
+    <panel_attributes>FK||pid  .
 --
-</panel_attributes>
+FK||stockCode</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1017</x>
-      <y>432</y>
-      <w>108</w>
-      <h>72</h>
+      <x>639</x>
+      <y>198</y>
+      <w>63</w>
+      <h>45</h>
     </coordinates>
-    <panel_attributes>SGrams
+    <panel_attributes>FK||pid  .
 --
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>846</x>
-      <y>432</y>
-      <w>117</w>
-      <h>63</h>
-    </coordinates>
-    <panel_attributes>SPiece
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>414</x>
-      <y>432</y>
-      <w>153</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>Income
---
-- cosmeticSale:double
---</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>612</x>
-      <y>432</y>
-      <w>144</w>
-      <h>117</h>
-    </coordinates>
-    <panel_attributes>Payments
---
-- monthly:double
-- personel:double
-- rent:double
-- material:double
-- equipment:double
---</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>891</x>
-      <y>63</y>
-      <w>135</w>
-      <h>108</h>
-    </coordinates>
-    <panel_attributes>GUIController
---
-</panel_attributes>
+FK||stock</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
