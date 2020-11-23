@@ -43,7 +43,6 @@ public class ProductDAO extends DBConnection{
             ResultSet rs=st.executeQuery("select * from product order by pid asc");
             
             while(rs.next()){
-
                 Product tmp= new Product(rs.getInt("pid"),rs.getString("pname"), 
                         rs.getString("category"), rs.getDouble("price"), rs.getString("brand"),
                         rs.getString("barcode"), rs.getInt("piece"), rs.getString("descr"));
@@ -52,7 +51,7 @@ public class ProductDAO extends DBConnection{
 
             }
         } catch (SQLException ex) {
-            ex.getMessage();
+            System.out.println(ex.getMessage());
         }
         return pList;
     }
@@ -69,7 +68,7 @@ public class ProductDAO extends DBConnection{
             ps.setString(7, p.getDescr());
             ps.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }
     

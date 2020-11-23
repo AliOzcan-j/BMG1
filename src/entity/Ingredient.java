@@ -17,6 +17,18 @@ public class Ingredient {
     public Ingredient() {
     }
 
+    public Ingredient(String unqCode, int pieces, double amount) {
+        this.unqCode = unqCode;
+        this.pieces = pieces;
+        this.amount = amount;
+    }
+
+    public Ingredient(int pieces, double amount) {
+        this.pieces = pieces;
+        this.amount = amount;
+    }
+    
+
     public String getUnqCode() {
         return unqCode;
     }

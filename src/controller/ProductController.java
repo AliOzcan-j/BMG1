@@ -16,38 +16,39 @@ import java.util.List;
  */
 public class ProductController{
     private Product product;
-    private ProductDAO doa;
+    private ProductDAO dao;
 
     public ProductController() {
     }
     
     public void create(String name, String category, double price, String brand, String barcode, int piece, String descr){
         this.product=new Product(name, category, price, brand, barcode, piece, descr);
-        this.getDoa().create(product);
+        this.getDao().create(product);
     }
     
     public List<Product> read(){        
-        return this.getDoa().read();
+        return this.getDao().read();
     }
     
     public void update(int id, String name, String category, double price, String brand, String barcode, int piece, String descr){
-        product=new Product(id, name, category, price, brand, barcode, piece, descr);
-        this.getDoa().update(product);
+        this.product=new Product(id, name, category, price, brand, barcode, piece, descr);
+        this.getDao().update(product);
     }
     
     public void delete(int v){
-        this.getDoa().delete(v);
+        this.getDao().delete(v);
     }
 
-    public ProductDAO getDoa() {
-        if(this.doa==null){
-            this.doa=new ProductDAO();
+    public ProductDAO getDao() {
+        if(this.dao==null){
+            this.dao=new ProductDAO();
         }
-        return doa;
+        return dao;
     }
 
-    public void setDoa(ProductDAO doa) {
-        this.doa = doa;
+    public void setDao(ProductDAO dao) {
+        this.dao = dao;
     }
+    
     
 }
