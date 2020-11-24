@@ -10,6 +10,7 @@ package entity;
  * @author ACE
  */
 public class Ingredient {
+
     private String unqCode;
     private int pieces;
     private double amount;
@@ -27,7 +28,6 @@ public class Ingredient {
         this.pieces = pieces;
         this.amount = amount;
     }
-    
 
     public String getUnqCode() {
         return unqCode;
@@ -52,6 +52,5 @@ public class Ingredient {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-    
-    
+
 }

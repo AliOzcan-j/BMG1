@@ -14,33 +14,34 @@ import java.util.List;
  * @author ACE
  */
 public class IngredientController {
+
     private Ingredient ingredient;
     private IngredientDAO dao;
 
     public IngredientController() {
     }
 
-    public void create(String unqCode, int pieces, double amount){
-        this.ingredient=new Ingredient(unqCode, pieces, amount);
+    public void create(String unqCode, int pieces, double amount) {
+        this.ingredient = new Ingredient(unqCode, pieces, amount);
         this.getDao().create(ingredient);
     }
-    
-    public List<Ingredient> read(){
+
+    public List<Ingredient> read() {
         return this.getDao().read();
     }
-    
-    public void update(String unqCode, int pieces, double amount,String cd){
-        this.ingredient=new Ingredient(unqCode, pieces, amount);
-        this.getDao().update(ingredient,cd);
+
+    public void update(String unqCode, int pieces, double amount, String cd) {
+        this.ingredient = new Ingredient(unqCode, pieces, amount);
+        this.getDao().update(ingredient, cd);
     }
-    
-    public void delete(String unqCode){
+
+    public void delete(String unqCode) {
         this.getDao().delete(unqCode);
     }
 
     public IngredientDAO getDao() {
-        if(this.dao==null){
-            this.dao=new IngredientDAO();
+        if (this.dao == null) {
+            this.dao = new IngredientDAO();
         }
         return dao;
     }
@@ -48,6 +49,5 @@ public class IngredientController {
     public void setDao(IngredientDAO dao) {
         this.dao = dao;
     }
-    
-    
+
 }

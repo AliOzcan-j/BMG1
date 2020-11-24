@@ -10,6 +10,7 @@ package entity;
  * @author ACE
  */
 public class Product {
+
     private int pid;
     private String name;
     private String category;
@@ -19,7 +20,6 @@ public class Product {
     private int piece;
     private String descr;
 
-    
     public Product() {
     }
 
@@ -103,5 +103,5 @@ public class Product {
     public void setDescr(String desc) {
         this.descr = desc;
     }
-    
+
 }

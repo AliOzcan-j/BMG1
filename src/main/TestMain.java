@@ -9,6 +9,7 @@ package main;
 import controller.*;
 import entity.*;
 import java.io.IOException;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,12 +24,12 @@ public class TestMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        Product prdct=new Product();
         ProductController pc=new ProductController();
-        Ingredient ing=new Ingredient();
         IngredientController ic=new IngredientController();
+        ArgeController prc=new ArgeController();
+        NonArgeController nc=new NonArgeController();
         
-        /*pc.create("gündüz kremi", "krem", 999.9, "nefes", "94561384", 22, "ööeöoahtpöpöspönöspösöppapapentonağpet");
+        /*pc.create("gündüz kremi", "krem", 999.9, "nefes", "941384", 22, "ööeöoahtpöpöspönöspösöppapapentonağpet");
         pc.update(2,"aaserum", "serum", 2999.9, "nefes", "8745487230", 55, "Lorem Ipsum the cat jump down doo lol");
         List<Product> l=new ArrayList<>();
         l=pc.read();
@@ -52,6 +53,34 @@ public class TestMain {
             System.out.println(il.get(i).getUnqCode()+" "+il.get(i).getPieces()+" "+il.get(i).getAmount());
             i++;
         }*/
+        
+        /*prc.create("drog","satış",5000.12,0.0);
+        prc.update("bmg1", "kira", 1234, 0, 0, 2900.40);
+        List<Arge> pl=new ArrayList<>();
+        pl=prc.read();
+        int i=0;
+        while(i<pl.size()){
+            System.out.println(pl.get(i).getProjectName()+" "+pl.get(i).getCategory()+" "+pl.get(i).getIncome()+" "+pl.get(i).getExpense());
+            i++;
+        }
+        prc.delete("drog", "satış", 5000.12);*/
+        
+        /*nc.create("kira", 0, 8452.40);
+        nc.create("vergi", 0, 1282.88);
+        nc.create("sgk", 0, 911.20);
+        nc.create("sgk", 0, 897.88);
+        nc.create("bağış", 10222.50, 0);
+        nc.create("melek yatırımcı", 80000.50, 0);
+        nc.update("vergi", 0, 100, 0, 1282.88);
+        nc.delete("sgk", 911.2);
+        List<NonArge> nl=new ArrayList<>();
+        nl=nc.read();
+        int i=0;
+        while(i<nl.size()){
+            System.out.println(nl.get(i).getCategory()+" "+nl.get(i).getIncome()+" "+nl.get(i).getExpense());
+            i++;
+        }*/
+        
     }
     
 }

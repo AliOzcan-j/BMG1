@@ -21,7 +21,7 @@ public class IngredientDAO extends DBConnection {
 
     public void create(Ingredient ing) {
         try {
-            PreparedStatement ps = this.connect().prepareStatement("insert into ingredient(unqCode, pieces, amount)"+"values(?,?,?)");
+            PreparedStatement ps = this.connect().prepareStatement("insert into ingredient(unqCode, pieces, amount)" + "values(?,?,?)");
             ps.setString(1, ing.getUnqCode());
             ps.setInt(2, ing.getPieces());
             ps.setDouble(3, ing.getAmount());
@@ -35,11 +35,11 @@ public class IngredientDAO extends DBConnection {
     public List<Ingredient> read() {
         List<Ingredient> iList = new ArrayList<>();
         try {
-            Statement st=this.connect().createStatement();
-            ResultSet rs=st.executeQuery("select * from ingredient");
-            
-            while(rs.next()){
-                Ingredient tmp=new Ingredient(rs.getString("unqCode"), rs.getInt("pieces"), rs.getDouble("amount"));
+            Statement st = this.connect().createStatement();
+            ResultSet rs = st.executeQuery("select * from ingredient");
+
+            while (rs.next()) {
+                Ingredient tmp = new Ingredient(rs.getString("unqCode"), rs.getInt("pieces"), rs.getDouble("amount"));
                 iList.add(tmp);
             }
         } catch (SQLException ex) {
@@ -48,10 +48,10 @@ public class IngredientDAO extends DBConnection {
         return iList;
     }
 
-    public void update(Ingredient ing,String cd) {
+    public void update(Ingredient ing, String cd) {
         PreparedStatement ps;
         try {
-            ps = this.connect().prepareStatement("update ingredient set unqCode=?, pieces=?, amount=? where unqCode="+"UPPER"+"("+"'"+ing.getUnqCode()+"'"+")");
+            ps = this.connect().prepareStatement("update ingredient set unqCode=?, pieces=?, amount=? where unqCode=" + "UPPER" + "(" + "'" + ing.getUnqCode() + "'" + ")");
             ps.setString(1, cd);
             ps.setInt(2, ing.getPieces());
             ps.setDouble(3, ing.getAmount());
@@ -59,22 +59,23 @@ public class IngredientDAO extends DBConnection {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-            
+
     }
 
     public void delete(String unqCode) {
         int r;
         try {
-            Statement st=this.connect().createStatement();
-            r=st.executeUpdate("delete from ingredient where unqCode="+"UPPER"+"('"+unqCode+"')");
-            if(r==1)
+            Statement st = this.connect().createStatement();
+            r = st.executeUpdate("delete from ingredient where unqCode=" + "UPPER" + "('" + unqCode + "')");
+            if (r == 1) {
                 System.out.println("operation was successful");
-            else
+            } else {
                 System.out.println("Code doesnt exist");
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
     }
 
 }

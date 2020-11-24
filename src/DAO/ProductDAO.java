@@ -17,11 +17,11 @@ import java.util.logging.Logger;
  *
  * @author ACE
  */
-public class ProductDAO extends DBConnection{
-    
+public class ProductDAO extends DBConnection {
+
     public void create(Product p) {
         try {
-            PreparedStatement ps= this.connect().prepareStatement("insert into product(pname, category, price, brand, barcode, piece, descr)"+"values(?,?,?,?,?,?,?)");
+            PreparedStatement ps = this.connect().prepareStatement("insert into product(pname, category, price, brand, barcode, piece, descr)" + "values(?,?,?,?,?,?,?)");
             ps.setString(1, p.getName());
             ps.setString(2, p.getCategory());
             ps.setDouble(3, p.getPrice());
@@ -30,23 +30,23 @@ public class ProductDAO extends DBConnection{
             ps.setInt(6, p.getPiece());
             ps.setString(7, p.getDescr());
             ps.executeUpdate();
-            
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-    
-    public List<Product> read(){
-        List<Product> pList=new ArrayList<>();
+
+    public List<Product> read() {
+        List<Product> pList = new ArrayList<>();
         try {
-            Statement st=this.connect().createStatement();
-            ResultSet rs=st.executeQuery("select * from product order by pid asc");
-            
-            while(rs.next()){
-                Product tmp= new Product(rs.getInt("pid"),rs.getString("pname"), 
+            Statement st = this.connect().createStatement();
+            ResultSet rs = st.executeQuery("select * from product order by pid asc");
+
+            while (rs.next()) {
+                Product tmp = new Product(rs.getInt("pid"), rs.getString("pname"),
                         rs.getString("category"), rs.getDouble("price"), rs.getString("brand"),
                         rs.getString("barcode"), rs.getInt("piece"), rs.getString("descr"));
-                                
+
                 pList.add(tmp);
 
             }
@@ -55,10 +55,10 @@ public class ProductDAO extends DBConnection{
         }
         return pList;
     }
-    
-    public void update(Product p){
+
+    public void update(Product p) {
         try {
-            PreparedStatement ps=this.connect().prepareStatement("update product set pname=?, category=?, price=?, brand=?, barcode=?, piece=?, descr=? where pid="+p.getpID());
+            PreparedStatement ps = this.connect().prepareStatement("update product set pname=?, category=?, price=?, brand=?, barcode=?, piece=?, descr=? where pid=" + p.getpID());
             ps.setString(1, p.getName());
             ps.setString(2, p.getCategory());
             ps.setDouble(3, p.getPrice());
@@ -71,16 +71,17 @@ public class ProductDAO extends DBConnection{
             System.out.println(ex.getMessage());
         }
     }
-    
-    public void delete(int v){
+
+    public void delete(int v) {
         int r;
         try {
-            Statement st=this.connect().createStatement();
-            r=st.executeUpdate("delete from product where pid="+v);
-            if(r==1)
+            Statement st = this.connect().createStatement();
+            r = st.executeUpdate("delete from product where pid=" + v);
+            if (r == 1) {
                 System.out.println("operation was successful");
-            else
+            } else {
                 System.out.println("id could not be found");
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

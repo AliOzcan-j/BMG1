@@ -14,34 +14,35 @@ import java.util.List;
  *
  * @author ACE
  */
-public class ProductController{
+public class ProductController {
+
     private Product product;
     private ProductDAO dao;
 
     public ProductController() {
     }
-    
-    public void create(String name, String category, double price, String brand, String barcode, int piece, String descr){
-        this.product=new Product(name, category, price, brand, barcode, piece, descr);
+
+    public void create(String name, String category, double price, String brand, String barcode, int piece, String descr) {
+        this.product = new Product(name, category, price, brand, barcode, piece, descr);
         this.getDao().create(product);
     }
-    
-    public List<Product> read(){        
+
+    public List<Product> read() {
         return this.getDao().read();
     }
-    
-    public void update(int id, String name, String category, double price, String brand, String barcode, int piece, String descr){
-        this.product=new Product(id, name, category, price, brand, barcode, piece, descr);
+
+    public void update(int id, String name, String category, double price, String brand, String barcode, int piece, String descr) {
+        this.product = new Product(id, name, category, price, brand, barcode, piece, descr);
         this.getDao().update(product);
     }
-    
-    public void delete(int v){
+
+    public void delete(int v) {
         this.getDao().delete(v);
     }
 
     public ProductDAO getDao() {
-        if(this.dao==null){
-            this.dao=new ProductDAO();
+        if (this.dao == null) {
+            this.dao = new ProductDAO();
         }
         return dao;
     }
@@ -49,6 +50,5 @@ public class ProductController{
     public void setDao(ProductDAO dao) {
         this.dao = dao;
     }
-    
-    
+
 }
