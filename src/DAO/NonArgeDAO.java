@@ -10,14 +10,12 @@ import entity.NonArge;
 import java.util.List;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author ACE
  */
-public class NonArgeDAO extends DBConnection {
+public class NonArgeDAO extends DBConnection {//arge dışı harcama ve gelirlerin veri tabanındaki işlemlerini gerçekleştirecek sınıf
 
     public void create(NonArge na) {
         try {

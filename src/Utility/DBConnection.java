@@ -11,6 +11,7 @@ import java.sql.*;
  *
  * @author ACE
  */
+//Bu sınıf yalnızca veri tabanına bağlantı açacak, kendi başına iş yapmayacağı için abstract olarak tanımlandı
 public abstract class DBConnection {
 
     public DBConnection() {

@@ -24,13 +24,13 @@ public class TestMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        ProductController pc=new ProductController();
+        ProductController pc=new ProductController(); //arayüzden gelen verileri controller paketindeki sınıflar işleyecek ve veri tabanı erişim sınıfı olan DAO ya iletecek
         IngredientController ic=new IngredientController();
         ArgeController prc=new ArgeController();
         NonArgeController nc=new NonArgeController();
         
         /*pc.create("gündüz kremi", "krem", 999.9, "nefes", "941384", 22, "ööeöoahtpöpöspönöspösöppapapentonağpet");
-        pc.update(2,"aaserum", "serum", 2999.9, "nefes", "8745487230", 55, "Lorem Ipsum the cat jump down doo lol");
+        pc.update(2,"aaserum", "serum", 2999.9, "nefes", "8745487230", 55, "Lorem Ipsum the cat jump down doo");
         List<Product> l=new ArrayList<>();
         l=pc.read();
         int i=0;

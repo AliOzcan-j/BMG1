@@ -39,7 +39,7 @@ public class ProductController {
     public void delete(int v) {
         this.getDao().delete(v);
     }
-
+//eğer açık kalan bağlantı varsa tekrardan yeni bir bağlantı açmak yerine eldeki bağlantı kullanılmasını sağlamak amacıyla koşula bağlandı
     public ProductDAO getDao() {
         if (this.dao == null) {
             this.dao = new ProductDAO();

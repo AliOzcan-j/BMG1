@@ -22,6 +22,8 @@ public class ProductDAO extends DBConnection {
     public void create(Product p) {
         try {
             PreparedStatement ps = this.connect().prepareStatement("insert into product(pname, category, price, brand, barcode, piece, descr)" + "values(?,?,?,?,?,?,?)");
+            /*Statement yerine PreparedStatement kullanılmasının sebebi ? sembolü, jdbc bu sembolü tıpkı bir değişken gibi algılıyor ve hazır query'ye sonradan verilen
+            değerlerin atamasını yapıyor. Bu şekilde javada yazılan query okunmaz hale gelmeden daha karmaşık update ve insert işlemleri yapılabiliyor*/
             ps.setString(1, p.getName());
             ps.setString(2, p.getCategory());
             ps.setDouble(3, p.getPrice());
@@ -72,7 +74,7 @@ public class ProductDAO extends DBConnection {
         }
     }
 
-    public void delete(int v) {
+    public void delete(int v) {//arayüzde kullanıcıya ürünün veri tabanındaki tüm bilgileri gösterilerek seçim yaptırırken arayüzden gelecek olan bilgi yalnızca id değeri olacak
         int r;
         try {
             Statement st = this.connect().createStatement();
