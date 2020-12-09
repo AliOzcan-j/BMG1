@@ -28,6 +28,7 @@ public class TestMain {
         IngredientController ic=new IngredientController();
         ArgeController prc=new ArgeController();
         NonArgeController nc=new NonArgeController();
+        ProductionController ptc=new ProductionController();
         
         /*pc.create("gündüz kremi", "krem", 999.9, "nefes", "941384", 22, "ööeöoahtpöpöspönöspösöppapapentonağpet");
         pc.update(2,"aaserum", "serum", 2999.9, "nefes", "8745487230", 55, "Lorem Ipsum the cat jump down doo");
@@ -80,7 +81,9 @@ public class TestMain {
             System.out.println(nl.get(i).getCategory()+" "+nl.get(i).getIncome()+" "+nl.get(i).getExpense());
             i++;
         }*/
-        
+        String[] cd={"3t32","A05F59","E2F8AE"};
+        double[] v={200,500,600};
+        ptc.create(cd, v, "gündüz kremi", 60);
     }
     
 }
