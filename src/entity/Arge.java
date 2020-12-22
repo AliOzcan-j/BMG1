@@ -58,4 +58,9 @@ public class Arge {
         this.expense = expense;
     }
 
+    @Override
+    public String toString() {
+        return "Arge{" + "projectName=" + projectName + ", category=" + category + ", income=" + income + ", expense=" + expense + '}';
+    }
+
 }

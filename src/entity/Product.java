@@ -44,6 +44,16 @@ public class Product {
         this.descr = descr;
     }
 
+    public Product(int pid, String name, String category,String barcode, double price) {
+        this.pid = pid;
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.barcode = barcode;
+    }
+    
+    
+
     public int getpID() {
         return pid;
     }
@@ -103,5 +113,11 @@ public class Product {
     public void setDescr(String desc) {
         this.descr = desc;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" + "pid=" + pid + ", name=" + name + ", category=" + category + ", price=" + price + ", brand=" + brand + ", barcode=" + barcode + ", piece=" + piece + ", descr=" + descr + '}';
+    }
+    
 
 }

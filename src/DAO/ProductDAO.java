@@ -60,14 +60,12 @@ public class ProductDAO extends DBConnection {
 
     public void update(Product p) {
         try {
-            PreparedStatement ps = this.connect().prepareStatement("update product set pname=?, category=?, price=?, brand=?, barcode=?, piece=?, descr=? where pid=" + p.getpID());
+            PreparedStatement ps = this.connect().prepareStatement("update product set pname=?, category=?, price=?, barcode=? where pid=" + p.getpID());
             ps.setString(1, p.getName());
             ps.setString(2, p.getCategory());
             ps.setDouble(3, p.getPrice());
-            ps.setString(4, p.getBrand());
-            ps.setString(5, p.getBarcode());
-            ps.setInt(6, p.getPiece());
-            ps.setString(7, p.getDescr());
+            ps.setString(4, p.getBarcode());
+
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -88,5 +86,7 @@ public class ProductDAO extends DBConnection {
             System.out.println(ex.getMessage());
         }
     }
+    
+    
 
 }

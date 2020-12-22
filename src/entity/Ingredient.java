@@ -53,4 +53,11 @@ public class Ingredient {
         this.amount = amount;
     }
 
+    @Override
+    public String toString() {
+        return "Ingredient{" + "unqCode=" + unqCode + ", pieces=" + pieces + ", amount=" + amount + '}';
+    }
+    
+    
+
 }

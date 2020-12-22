@@ -48,13 +48,13 @@ public class IngredientDAO extends DBConnection {
         return iList;
     }
 
-    public void update(Ingredient ing, String cd) {
+    public void update(Ingredient ing) {
         PreparedStatement ps;
         try {
-            ps = this.connect().prepareStatement("update ingredient set unqCode=?, pieces=?, amount=? where unqCode=" + "UPPER" + "(" + "'" + ing.getUnqCode() + "'" + ")");
-            ps.setString(1, cd);
-            ps.setInt(2, ing.getPieces());
-            ps.setDouble(3, ing.getAmount());
+            ps = this.connect().prepareStatement("update ingredient set pieces=?, amount=? where unqCode=" + "UPPER" + "(" + "'" + ing.getUnqCode() + "'" + ")");
+            
+            ps.setInt(1, ing.getPieces());
+            ps.setDouble(2, ing.getAmount());
             ps.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

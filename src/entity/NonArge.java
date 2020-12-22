@@ -48,4 +48,11 @@ public class NonArge {
         this.expense = expense;
     }
 
+    @Override
+    public String toString() {
+        return "NonArge{" + "category=" + category + ", income=" + income + ", expense=" + expense + '}';
+    }
+    
+    
+
 }

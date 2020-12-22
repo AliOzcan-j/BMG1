@@ -30,9 +30,9 @@ public class IngredientController {
         return this.getDao().read();
     }
 
-    public void update(String unqCode, int pieces, double amount, String cd) {
+    public void update(String unqCode, int pieces, double amount) {
         this.ingredient = new Ingredient(unqCode, pieces, amount);
-        this.getDao().update(ingredient, cd);
+        this.getDao().update(ingredient);
     }
 
     public void delete(String unqCode) {

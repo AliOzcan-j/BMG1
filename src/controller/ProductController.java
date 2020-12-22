@@ -31,8 +31,8 @@ public class ProductController {
         return this.getDao().read();
     }
 
-    public void update(int id, String name, String category, double price, String brand, String barcode, int piece, String descr) {
-        this.product = new Product(id, name, category, price, brand, barcode, piece, descr);
+    public void update(int id, String name, String category, String barcode, double price ) {
+        this.product = new Product(id, name, category, barcode, price);
         this.getDao().update(product);
     }
 

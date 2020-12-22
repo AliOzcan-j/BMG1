@@ -4,8 +4,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,57 +13,130 @@
 
 <AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="compautomation.GUIController">
    <children>
-      <Pane fx:id="Pmain" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: ffffffff;">
+      <Pane fx:id="paneProductionEntry" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: ffffffff;">
          <children>
-            <Pane layoutX="-7.0" prefHeight="115.0" prefWidth="1095.0">
-               <children>
-                  <Label layoutX="357.0" layoutY="5.0" prefHeight="105.0" prefWidth="381.0" text="WELCOME">
-                     <font>
-                        <Font name="Arial" size="73.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Button layoutX="74.0" layoutY="163.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="240.0" text="Button" />
-            <Button layoutX="400.0" layoutY="163.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="240.0" text="Button" />
-            <Button layoutX="776.0" layoutY="163.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="240.0" text="Button" />
-            <Button layoutX="235.0" layoutY="444.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="240.0" text="Button" />
-            <Button layoutX="586.0" layoutY="444.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="240.0" text="Button" />
+            <ComboBox fx:id="cboxProIngCodes" layoutX="736.0" layoutY="477.0" prefWidth="150.0" />
+            <Label layoutX="485.0" layoutY="29.0" prefHeight="45.0" prefWidth="111.0" text="ÜRETİM">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="taProPList" editable="false" layoutX="14.0" layoutY="160.0" prefHeight="200.0" prefWidth="482.0" />
+            <TextField fx:id="tfProIngAmoutn" layoutX="737.0" layoutY="549.0" />
+            <TextArea fx:id="taProIngList" editable="false" layoutX="541.0" layoutY="160.0" prefHeight="200.0" prefWidth="526.0" />
+            <Label layoutX="222.0" layoutY="107.0" text="ÜRÜN">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="736.0" layoutY="107.0" text="HAMMADDE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cboxProPnames" layoutX="187.0" layoutY="477.0" prefWidth="150.0" />
+            <TextField fx:id="tfProPpieces" layoutX="188.0" layoutY="549.0" />
+            <Text layoutX="135.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="106.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PARTİ:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="675.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KOD:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="548.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HARCANAN MİKTAR:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnProDone" layoutX="485.0" layoutY="642.0" mnemonicParsing="false" onAction="#production" prefHeight="35.0" prefWidth="62.0" text="Bitir">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnProYenile" layoutX="490.0" layoutY="404.0" mnemonicParsing="false" onAction="#populateProductionAreas" text="Yenile" />
+            <Button fx:id="btnProductionToMenu" layoutX="40.0" layoutY="661.0" mnemonicParsing="false" onAction="#toMain" text="MENU" />
+            <Button fx:id="btnProductionAdd" layoutX="785.0" layoutY="601.0" mnemonicParsing="false" onAction="#productionAdd" text="Ekle" />
          </children></Pane>
-      <Pane fx:id="Paccounting" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: ffffffff;" />
-      <Pane fx:id="Pproduction" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: ffffffff;" />
-      <Pane fx:id="Pstock" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: ffffffff;">
+      <Pane fx:id="paneIngredientEntry" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: ffffffff;">
          <children>
-            <TableView fx:id="tblProduct" layoutX="52.0" layoutY="36.0" prefHeight="387.0" prefWidth="976.0">
-              <columns>
-                <TableColumn prefWidth="30.0" text="ID" />
-                <TableColumn prefWidth="120.0" text="Name" />
-                  <TableColumn prefWidth="88.0" text="Category" />
-                  <TableColumn prefWidth="119.0" text="Brand" />
-                  <TableColumn prefWidth="75.0" text="Quantity" />
-                  <TableColumn prefWidth="74.0" text="Price" />
-                  <TableColumn prefWidth="126.0" text="Barcode" />
-                  <TableColumn prefWidth="343.0" text="Description" />
-              </columns>
-            </TableView>
-            <Button layoutX="157.0" layoutY="579.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" text="Ürünler" />
-            <Button layoutX="789.0" layoutY="579.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" text="Hammaddeler" />
-            <TableView fx:id="tblIngredient" layoutX="405.0" layoutY="448.0" prefHeight="262.0" prefWidth="270.0">
-              <columns>
-                <TableColumn prefWidth="113.0" text="Stock Code" />
-                <TableColumn prefWidth="89.0" text="Amount" />
-                  <TableColumn prefWidth="67.0" text="Quantity" />
-              </columns>
-            </TableView>
+            <TextField fx:id="tfIngUnqCode" layoutX="134.0" layoutY="122.0" />
+            <Label layoutX="177.0" layoutY="32.0" prefHeight="45.0" prefWidth="62.0" text="Giriş">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="755.0" layoutY="32.0" prefHeight="45.0" prefWidth="111.0" text="Düzenle">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <Text layoutX="31.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Kodu:" />
+            <Text layoutX="42.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parça:" wrappingWidth="39.248046875" />
+            <Text layoutX="42.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Miktar:" wrappingWidth="39.248046875" />
+            <TextField fx:id="tfIngPieces" layoutX="134.0" layoutY="178.0" />
+            <TextField fx:id="tfIngAmount" layoutX="134.0" layoutY="233.0" />
+            <Button fx:id="btnIngAdd" layoutX="189.0" layoutY="300.0" mnemonicParsing="false" onAction="#ingredientAdd" text="Ekle" />
+            <TextArea fx:id="taIngUList" editable="false" layoutX="558.0" layoutY="82.0" prefHeight="200.0" prefWidth="505.0" />
+            <ComboBox fx:id="cboxIngUnqcodes" layoutX="738.0" layoutY="360.0" prefWidth="150.0" />
+            <Text layoutX="659.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parça:" wrappingWidth="39.248046875" />
+            <Text layoutX="659.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Miktar:" wrappingWidth="39.248046875" />
+            <TextField fx:id="tfIngUPieces" layoutX="739.0" layoutY="418.0" />
+            <TextField fx:id="tfIngUAmount" layoutX="739.0" layoutY="472.0" />
+            <Separator layoutX="507.0" layoutY="14.0" orientation="VERTICAL" prefHeight="692.0" prefWidth="20.0" />
+            <Button fx:id="btnIngUYenile" layoutX="786.0" layoutY="300.0" mnemonicParsing="false" onAction="#populateTextAreaUIngredient" text="Yenile" />
+            <Button fx:id="btnIngUDone" layoutX="787.0" layoutY="531.0" mnemonicParsing="false" onAction="#ingredientUpdate" text="Bitir" />
+            <Button fx:id="btnIngToMenu" layoutX="37.0" layoutY="660.0" mnemonicParsing="false" onAction="#toMain" text="MENU" />
+         </children>
+      </Pane>
+      <Pane fx:id="paneAccountingEntry" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: ffffffff;">
+         <children>
+            <Button fx:id="btnAccountingToMenu" layoutX="28.0" layoutY="665.0" mnemonicParsing="false" onAction="#toMain" text="MENU" />
+            <Label layoutX="157.0" layoutY="37.0" prefHeight="45.0" prefWidth="123.0" text="Ar-Ge Dışı">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="823.0" layoutY="37.0" prefHeight="45.0" prefWidth="73.0" text="Ar-Ge">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="taNonArgeList" editable="false" layoutX="28.0" layoutY="99.0" prefHeight="200.0" prefWidth="381.0" />
+            <TextArea fx:id="taArgeList" editable="false" layoutX="669.0" layoutY="99.0" prefHeight="200.0" prefWidth="381.0" />
+            <Button fx:id="btnAccYenile" layoutX="516.0" layoutY="187.0" mnemonicParsing="false" onAction="#populateTextAreaAccounting" text="Yenile" />
+            <TextField fx:id="tfNonArgeCat" layoutX="144.0" layoutY="335.0" />
+            <Text layoutX="28.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategori:" />
+            <Text layoutX="43.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gelir:" wrappingWidth="31.25390625" />
+            <Text layoutX="43.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gider:" />
+            <TextField fx:id="tfNonArgeInc" layoutX="144.0" layoutY="386.0" text="0" />
+            <TextField fx:id="tfNonArgeExp" layoutX="144.0" layoutY="427.0" text="0" />
+            <TextField fx:id="tfArgeCat" layoutX="843.0" layoutY="386.0" />
+            <Text layoutX="727.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategori:" />
+            <Text layoutX="742.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gelir:" wrappingWidth="31.25390625" />
+            <Text layoutX="742.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gider:" />
+            <TextField fx:id="tfArgeInc" layoutX="843.0" layoutY="437.0" text="0" />
+            <TextField fx:id="tfArgeExp" layoutX="843.0" layoutY="478.0" text="0" />
+            <Button fx:id="btnNonArgeEnter" layoutX="144.0" layoutY="492.0" mnemonicParsing="false" onAction="#accountingNonArge" text="Giriş yap" />
+            <Button fx:id="btnArgeEnter" layoutX="843.0" layoutY="538.0" mnemonicParsing="false" onAction="#accountingArge" text="Giriş yap" />
+            <Text layoutX="725.0" layoutY="352.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Proje Adı:" />
+            <TextField fx:id="tfArgePN" layoutX="843.0" layoutY="335.0" />
          </children></Pane>
-      <Pane fx:id="PaddProduct" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: ffffffff;">
+      <Pane fx:id="paneProductEntry" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: ffffffff;">
          <children>
             <Label layoutX="137.0" layoutY="28.0" prefHeight="48.0" prefWidth="198.0" text="Ürün girişi">
                <font>
                   <Font size="43.0" />
                </font>
             </Label>
-            <TextField layoutX="197.0" layoutY="133.0" />
+            <TextField fx:id="tfPName" layoutX="197.0" layoutY="133.0" />
             <Text layoutX="32.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ürün ismi:" wrappingWidth="87.13671875">
                <font>
                   <Font size="15.0" />
@@ -76,7 +147,7 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField layoutX="197.0" layoutY="189.0" />
+            <TextField fx:id="tfPCategory" layoutX="197.0" layoutY="189.0" />
             <Separator layoutX="32.0" layoutY="173.0" prefHeight="2.0" prefWidth="360.0" />
             <Separator layoutX="32.0" layoutY="229.0" prefHeight="2.0" prefWidth="360.0" />
             <Text layoutX="32.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marka:" wrappingWidth="87.13671875">
@@ -84,17 +155,17 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField layoutX="197.0" layoutY="250.0" />
+            <TextField fx:id="tfPBrand" layoutX="197.0" layoutY="250.0" />
             <Separator layoutX="32.0" layoutY="293.0" prefHeight="2.0" prefWidth="360.0" />
             <Separator layoutX="32.0" layoutY="359.0" prefHeight="2.0" prefWidth="360.0" />
-            <TextField layoutX="197.0" layoutY="315.0" />
+            <TextField fx:id="tfPPiece" layoutX="197.0" layoutY="315.0" />
             <Text layoutX="32.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stok miktarı:" wrappingWidth="87.13671875">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
             <Separator layoutX="32.0" layoutY="425.0" prefHeight="2.0" prefWidth="360.0" />
-            <TextField layoutX="197.0" layoutY="380.0" />
+            <TextField fx:id="tfPPrice" layoutX="197.0" layoutY="380.0" />
             <Text layoutX="32.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fiyat:" wrappingWidth="87.13671875">
                <font>
                   <Font size="15.0" />
@@ -106,13 +177,13 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField layoutX="197.0" layoutY="445.0" />
+            <TextField fx:id="tfPBarcode" layoutX="197.0" layoutY="445.0" />
             <Text layoutX="32.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Açıklama:" wrappingWidth="87.13671875">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextArea layoutX="192.0" layoutY="507.0" prefHeight="160.0" prefWidth="157.0" />
+            <TextArea fx:id="taPDescr" layoutX="192.0" layoutY="507.0" prefHeight="160.0" prefWidth="157.0" />
             <Separator layoutX="537.0" layoutY="28.0" orientation="VERTICAL" prefHeight="662.0" prefWidth="0.0" />
             <Label layoutX="684.0" layoutY="28.0" prefHeight="64.0" prefWidth="259.0" text="Ürün Düzenle">
                <font>
@@ -121,52 +192,76 @@
             </Label>
             <Separator layoutX="31.0" layoutY="112.0" prefHeight="1.0" prefWidth="482.0" />
             <Separator layoutX="562.0" layoutY="112.0" prefHeight="3.0" prefWidth="482.0" />
-            <ComboBox layoutX="728.0" layoutY="133.0" prefWidth="150.0" />
+            <ComboBox fx:id="cboxPid" layoutX="728.0" layoutY="133.0" prefWidth="150.0" />
             <Text layoutX="562.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ürün:" wrappingWidth="87.13671875">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Separator layoutX="563.0" layoutY="250.0" prefHeight="3.0" prefWidth="482.0" />
-            <TableView layoutX="596.0" layoutY="170.0" prefHeight="64.0" prefWidth="415.0">
-              <columns>
-                <TableColumn prefWidth="24.0" text="ID" />
-                <TableColumn prefWidth="156.0" text="Name" />
-                  <TableColumn prefWidth="72.0" text="Category" />
-                  <TableColumn prefWidth="85.0" text="Barcode" />
-                  <TableColumn prefWidth="77.0" text="Price" />
-              </columns>
-            </TableView>
-            <Text layoutX="563.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ürün ismi:" wrappingWidth="87.13671875">
+            <Separator layoutX="563.0" layoutY="387.0" prefHeight="3.0" prefWidth="482.0" />
+            <Text layoutX="563.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ürün ismi:" wrappingWidth="87.13671875">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="563.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategori:" wrappingWidth="87.13671875">
+            <Text layoutX="563.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kategori:" wrappingWidth="87.13671875">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField layoutX="729.0" layoutY="270.0" />
-            <TextField layoutX="729.0" layoutY="337.0" />
-            <Separator layoutX="562.0" layoutY="314.0" prefHeight="3.0" prefWidth="482.0" />
-            <Separator layoutX="563.0" layoutY="380.0" prefHeight="3.0" prefWidth="482.0" />
-            <Text layoutX="562.0" layoutY="418.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Barkod:" wrappingWidth="87.13671875">
+            <TextField fx:id="tfPUpname" layoutX="729.0" layoutY="407.0" />
+            <TextField fx:id="tfPUcategory" layoutX="729.0" layoutY="474.0" />
+            <Separator layoutX="562.0" layoutY="451.0" prefHeight="3.0" prefWidth="482.0" />
+            <Separator layoutX="563.0" layoutY="517.0" prefHeight="3.0" prefWidth="482.0" />
+            <Text layoutX="562.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Barkod:" wrappingWidth="87.13671875">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField layoutX="729.0" layoutY="399.0" />
-            <Separator layoutX="563.0" layoutY="444.0" prefHeight="3.0" prefWidth="482.0" />
-            <TextField layoutX="729.0" layoutY="468.0" />
-            <Text layoutX="562.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fiyat:" wrappingWidth="87.13671875">
+            <TextField fx:id="tfPUbarcode" layoutX="729.0" layoutY="536.0" />
+            <Separator layoutX="563.0" layoutY="581.0" prefHeight="3.0" prefWidth="482.0" />
+            <TextField fx:id="tfPUprice" layoutX="729.0" layoutY="605.0" />
+            <Text layoutX="562.0" layoutY="623.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fiyat:" wrappingWidth="87.13671875">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Separator layoutX="562.0" layoutY="515.0" prefHeight="3.0" prefWidth="160.0" />
-            <Separator layoutX="878.0" layoutY="514.0" prefHeight="3.0" prefWidth="160.0" />
-            <Button layoutX="742.0" layoutY="524.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="Güncelle" />
+            <Separator layoutX="562.0" layoutY="652.0" prefHeight="3.0" prefWidth="160.0" />
+            <Separator layoutX="878.0" layoutY="651.0" prefHeight="3.0" prefWidth="160.0" />
+            <Button fx:id="btnPUpdate" layoutX="742.0" layoutY="661.0" mnemonicParsing="false" onAction="#productUpdate" prefHeight="25.0" prefWidth="123.0" text="Güncelle" />
+            <Button fx:id="btnPAdd" layoutX="392.0" layoutY="524.0" mnemonicParsing="false" onAction="#productAdd" prefHeight="25.0" prefWidth="111.0" text="Kaydet" />
+            <TextArea fx:id="taPUList" editable="false" layoutX="563.0" layoutY="172.0" prefHeight="160.0" prefWidth="482.0" />
+            <Button fx:id="btnPUYenile" layoutX="778.0" layoutY="350.0" mnemonicParsing="false" onAction="#populateTextAreaUProduct" text="Yenile" />
+            <Button fx:id="btnProductToMenu" layoutX="31.0" layoutY="661.0" mnemonicParsing="false" onAction="#toMain" text="MENU" />
+         </children></Pane>
+      <Pane fx:id="paneMain" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: ffffffff;">
+         <children>
+            <Pane layoutX="-7.0" prefHeight="115.0" prefWidth="1095.0">
+               <children>
+                  <Label layoutX="357.0" layoutY="5.0" prefHeight="105.0" prefWidth="381.0" text="WELCOME">
+                     <font>
+                        <Font name="Arial" size="73.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Button fx:id="btnPnProductEntry" layoutX="74.0" layoutY="163.0" mnemonicParsing="false" onAction="#productEntrytoFront" prefHeight="90.0" prefWidth="240.0" text="Ürün Kayıt ve Düzenleme">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font></Button>
+            <Button fx:id="btnPnIngredientEntry" layoutX="400.0" layoutY="163.0" mnemonicParsing="false" onAction="#ingredientEntrytoFront" prefHeight="90.0" prefWidth="240.0" text="Hammadde Kayıt">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
+            <Button fx:id="btnPnProductionEntry" layoutX="764.0" layoutY="449.0" mnemonicParsing="false" onAction="#productionEntrytoFront" prefHeight="90.0" prefWidth="240.0" text="Üretim Sayfası">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font></Button>
+            <Button fx:id="btnPnAccountingEntry" layoutX="400.0" layoutY="449.0" mnemonicParsing="false" onAction="#accountingEntrytoFront" prefHeight="90.0" prefWidth="240.0" text="Muhasebe">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
          </children></Pane>
    </children>
 </AnchorPane>
