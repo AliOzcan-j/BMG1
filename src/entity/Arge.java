@@ -15,15 +15,17 @@ public class Arge {
     private String category;
     private double income;
     private double expense;
+    private String month;
 
     public Arge() {
     }
 
-    public Arge(String projectName, String category, double income, double expense) {
+    public Arge(String projectName, String category, double income, double expense, String month) {
         this.projectName = projectName;
         this.category = category;
         this.income = income;
         this.expense = expense;
+        this.month = month;
     }
 
     public String getProjectName() {
@@ -58,9 +60,17 @@ public class Arge {
         this.expense = expense;
     }
 
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
     @Override
     public String toString() {
-        return "Arge{" + "projectName=" + projectName + ", category=" + category + ", income=" + income + ", expense=" + expense + '}';
+        return "Arge{" + "projectName=" + projectName + ", category=" + category + ", income=" + income + ", expense=" + expense + ", month=" + month + '}';
     }
 
 }

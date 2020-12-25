@@ -19,10 +19,11 @@ public class NonArgeDAO extends DBConnection {//arge dışı harcama ve gelirler
 
     public void create(NonArge na) {
         try {
-            PreparedStatement ps = this.connect().prepareStatement("insert into nonarge(category, income, expense) values(?,?,?)");
+            PreparedStatement ps = this.connect().prepareStatement("insert into nonarge(category, income, expense, month) values(?,?,?,?)");
             ps.setString(1, na.getCategory());
             ps.setDouble(2, na.getIncome());
             ps.setDouble(3, na.getExpense());
+            ps.setString(4, na.getMonth());
 
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -38,7 +39,39 @@ public class NonArgeDAO extends DBConnection {//arge dışı harcama ve gelirler
             ResultSet rs = st.executeQuery("select * from nonarge");
 
             while (rs.next()) {
-                NonArge tmp = new NonArge(rs.getString("category"), rs.getDouble("income"), rs.getDouble("expense"));
+                NonArge tmp = new NonArge(rs.getString("category"), rs.getDouble("income"), rs.getDouble("expense"), rs.getString("month"));
+                naList.add(tmp);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return naList;
+    }
+    
+    public List<NonArge> readByCat(String cat){
+        List<NonArge> naList = new ArrayList<>();
+        try {
+            Statement st = this.connect().createStatement();
+            ResultSet rs = st.executeQuery("select * from nonarge where category='"+ cat +"'");
+
+            while (rs.next()) {
+                NonArge tmp = new NonArge(rs.getString("category"), rs.getDouble("income"), rs.getDouble("expense"), rs.getString("month"));
+                naList.add(tmp);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return naList;
+    }
+    
+    public List<NonArge> readByMonth(String mon){
+        List<NonArge> naList = new ArrayList<>();
+        try {
+            Statement st = this.connect().createStatement();
+            ResultSet rs = st.executeQuery("select * from nonarge where month='"+ mon +"'");
+
+            while (rs.next()) {
+                NonArge tmp = new NonArge(rs.getString("category"), rs.getDouble("income"), rs.getDouble("expense"), rs.getString("month"));
                 naList.add(tmp);
             }
         } catch (SQLException ex) {

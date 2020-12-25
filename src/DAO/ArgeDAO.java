@@ -17,17 +17,18 @@ import java.util.List;
 /**
  *
  *
- * @author ACE
+ * @author ACE kategoriye göre listeleme, gelirleri listeleme, giderleri listeleme , ay a göre giriş
  */
 public class ArgeDAO extends DBConnection {
 
     public void create(Arge p) {
         try {
-            PreparedStatement ps = this.connect().prepareStatement("insert into arge(projectname, category, income, expense) values(?,?,?,?)");
+            PreparedStatement ps = this.connect().prepareStatement("insert into arge(projectname, category, income, expense, month) values(?,?,?,?,?)");
             ps.setString(1, p.getProjectName());
             ps.setString(2, p.getCategory());
             ps.setDouble(3, p.getIncome());
             ps.setDouble(4, p.getExpense());
+            ps.setString(5, p.getMonth());
 
             ps.executeUpdate();
 
@@ -43,7 +44,39 @@ public class ArgeDAO extends DBConnection {
             ResultSet rs = st.executeQuery("select * from arge");
 
             while (rs.next()) {
-                Arge tmp = new Arge(rs.getString("projectname"), rs.getString("category"), rs.getDouble("income"), rs.getDouble("expense"));
+                Arge tmp = new Arge(rs.getString("projectname"), rs.getString("category"), rs.getDouble("income"), rs.getDouble("expense"), rs.getString("month"));
+                pList.add(tmp);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return pList;
+    }
+    
+    public List<Arge> readByCat(String cat) {
+        List<Arge> pList = new ArrayList<>();
+        try {
+            Statement st = this.connect().createStatement();
+            ResultSet rs = st.executeQuery("select * from arge where category='"+ cat +"'");
+
+            while (rs.next()) {
+                Arge tmp = new Arge(rs.getString("projectname"), rs.getString("category"), rs.getDouble("income"), rs.getDouble("expense"), rs.getString("month"));
+                pList.add(tmp);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return pList;
+    }
+    
+    public List<Arge> readByMonth(String mon) {
+        List<Arge> pList = new ArrayList<>();
+        try {
+            Statement st = this.connect().createStatement();
+            ResultSet rs = st.executeQuery("select * from arge where month='"+ mon +"'");
+
+            while (rs.next()) {
+                Arge tmp = new Arge(rs.getString("projectname"), rs.getString("category"), rs.getDouble("income"), rs.getDouble("expense"), rs.getString("month"));
                 pList.add(tmp);
             }
         } catch (SQLException ex) {

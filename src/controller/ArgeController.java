@@ -21,17 +21,25 @@ public class ArgeController {
     public ArgeController() {
     }
 
-    public void create(String projectName, String category, double income, double expense) {
-        this.arge = new Arge(projectName, category, income, expense);
+    public void create(String projectName, String category, double income, double expense, String month) {
+        this.arge = new Arge(projectName, category, income, expense, month);
         this.getDao().create(arge);
     }
 
     public List<Arge> read() {
         return this.getDao().read();
     }
+    
+    public List<Arge> readByCat(String cat){
+        return this.getDao().readByCat(cat);
+    }
+    
+    public List<Arge> readByMonth(String mon){
+        return this.getDao().readByMonth(mon);
+    }
 
-    public void update(String projectName, String category, double income, double expense, double olincome, double olexpense) {
-        this.arge = new Arge(projectName, category, income, expense);
+    public void update(String projectName, String category, double income, double expense, double olincome, double olexpense, String month) {
+        this.arge = new Arge(projectName, category, income, expense, month);
         this.getDao().update(arge, olincome, olexpense);
     }
 

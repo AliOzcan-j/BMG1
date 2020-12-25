@@ -14,14 +14,16 @@ public class NonArge {
     private String category;
     private double income;
     private double expense;
+    private String month;
 
     public NonArge() {
     }
 
-    public NonArge(String category, double income, double expense) {
+    public NonArge(String category, double income, double expense, String month) {
         this.category = category;
         this.income = income;
         this.expense = expense;
+        this.month = month;
     }
 
     public String getCategory() {
@@ -48,11 +50,17 @@ public class NonArge {
         this.expense = expense;
     }
 
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
+    }
+
     @Override
     public String toString() {
-        return "NonArge{" + "category=" + category + ", income=" + income + ", expense=" + expense + '}';
+        return "NonArge{" + "category=" + category + ", income=" + income + ", expense=" + expense + ", month=" + month + '}';
     }
-    
-    
 
 }

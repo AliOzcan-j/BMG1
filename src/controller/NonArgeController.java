@@ -21,17 +21,25 @@ public class NonArgeController {
     public NonArgeController() {
     }
 
-    public void create(String category, double income, double expense) {
-        this.nonArge = new NonArge(category, income, expense);
+    public void create(String category, double income, double expense, String month) {
+        this.nonArge = new NonArge(category, income, expense, month);
         this.getDao().create(this.nonArge);
     }
 
     public List<NonArge> read() {
         return this.getDao().read();
     }
+    
+    public List<NonArge> readByCat(String cat){
+        return this.getDao().readByCat(cat);
+    }
+    
+    public List<NonArge> readByMonth(String mon){
+        return this.getDao().readByMonth(mon);
+    }
 
-    public void update(String category, double income, double expense, double olincome, double olexpense) {
-        this.nonArge = new NonArge(category, income, expense);
+    public void update(String category, double income, double expense, double olincome, double olexpense, String month) {
+        this.nonArge = new NonArge(category, income, expense, month);
         this.getDao().update(nonArge, olincome, olexpense);
     }
 

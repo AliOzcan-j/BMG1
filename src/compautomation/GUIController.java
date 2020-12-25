@@ -16,7 +16,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 
-
 public class GUIController implements Initializable {
 
     private ProductController pc;
@@ -147,25 +146,43 @@ public class GUIController implements Initializable {
     @FXML
     private Button btnArgeEnter;
     @FXML
-    private TextField tfNonArgeCat;
+    private ComboBox cboxNonArgeCat;
+    @FXML
+    private ComboBox cboxNonArgeMon;
     @FXML
     private TextField tfNonArgeInc;
     @FXML
     private TextField tfNonArgeExp;
     @FXML
-    private TextField tfArgeCat;
+    private ComboBox cboxArgeCat;
+    @FXML
+    private ComboBox cboxArgeMon;
     @FXML
     private TextField tfArgeInc;
     @FXML
     private TextField tfArgeExp;
     @FXML
     private TextField tfArgePN;
+    @FXML
+    private ComboBox cboxAccCatChc;
+    @FXML
+    private ComboBox cboxAccMonChc;
+    @FXML
+    private Button btnAccCatGet;
+    @FXML
+    private Button btnAccMonGet;
 
     public GUIController() {
         cboxPid = new ComboBox();
         cboxIngUnqcodes = new ComboBox();
         cboxProPnames = new ComboBox();
         cboxProIngCodes = new ComboBox();
+        cboxNonArgeMon = new ComboBox();
+        cboxArgeMon = new ComboBox();
+        cboxAccCatChc = new ComboBox();
+        cboxAccMonChc = new ComboBox();
+        cboxNonArgeCat = new ComboBox();
+        cboxArgeCat = new ComboBox();
         taPUList = new TextArea();
         taIngUList = new TextArea();
         taProPList = new TextArea();
@@ -400,18 +417,79 @@ public class GUIController implements Initializable {
         amountList[ind] = Double.parseDouble(tfProIngAmoutn.getText());
         ind++;
     }
-    
+
     //MUHASEBE İŞLEMLERİ
     @FXML
-    private void accountingNonArge(){
+    private void accountingNonArge() {
         naC = new NonArgeController();
-        naC.create(tfNonArgeCat.getText(), Double.parseDouble(tfNonArgeInc.getText()), 
-                Double.parseDouble(tfNonArgeExp.getText()));
+        naC.create(cboxNonArgeCat.getSelectionModel().getSelectedItem().toString(), Double.parseDouble(tfNonArgeInc.getText()),
+                Double.parseDouble(tfNonArgeExp.getText()), cboxNonArgeMon.getSelectionModel().getSelectedItem().toString());
     }
-    
+
     @FXML
-    private void accountingArge(){
+    private void accountingArge() {
         aC = new ArgeController();
-        aC.create(tfArgePN.getText(), tfArgeCat.getText(), Double.parseDouble(tfArgeInc.getText()), Double.parseDouble(tfArgeExp.getText()));
+        aC.create(tfArgePN.getText(), cboxArgeCat.getSelectionModel().getSelectedItem().toString(),
+                Double.parseDouble(tfArgeInc.getText()), Double.parseDouble(tfArgeExp.getText()),
+                cboxArgeMon.getSelectionModel().getSelectedItem().toString());
+    }
+
+    @FXML
+    private void accountingGetByCategory() {
+        taNonArgeList.setText("");
+        taArgeList.setText("");
+        aC = new ArgeController();
+        naC = new NonArgeController();
+        arList = new ArrayList<>();
+        nonArList = new ArrayList<>();
+
+        arList = aC.readByCat(cboxAccCatChc.getSelectionModel().getSelectedItem().toString());
+        nonArList = naC.readByCat(cboxAccCatChc.getSelectionModel().getSelectedItem().toString());
+
+        int i = 0;
+        while (i < nonArList.size()) {
+            taNonArgeList.appendText(nonArList.get(i).toString() + "\n");
+            i++;
+        }
+        i = 0;
+        while (i < arList.size()) {
+            taArgeList.appendText(arList.get(i).toString() + "\n");
+            i++;
+        }
+
+        aC = null;
+        naC = null;
+        arList = null;
+        nonArList = null;
+
+    }
+
+    @FXML
+    private void accountingGetByMonth() {
+        taNonArgeList.setText("");
+        taArgeList.setText("");
+        aC = new ArgeController();
+        naC = new NonArgeController();
+        arList = new ArrayList<>();
+        nonArList = new ArrayList<>();
+
+        arList = aC.readByMonth(cboxAccMonChc.getSelectionModel().getSelectedItem().toString());
+        nonArList = naC.readByMonth(cboxAccMonChc.getSelectionModel().getSelectedItem().toString());
+
+        int i = 0;
+        while (i < nonArList.size()) {
+            taNonArgeList.appendText(nonArList.get(i).toString() + "\n");
+            i++;
+        }
+        i = 0;
+        while (i < arList.size()) {
+            taArgeList.appendText(arList.get(i).toString() + "\n");
+            i++;
+        }
+
+        aC = null;
+        naC = null;
+        arList = null;
+        nonArList = null;
     }
 }
